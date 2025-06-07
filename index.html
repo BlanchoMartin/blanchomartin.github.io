@@ -9,6 +9,7 @@
     :root {
       --primary-color: #2c3e50;
       --accent-color: #3498db;
+      --github-color: #333;
       --light-color: #ecf0f1;
       --dark-color: #2c3e50;
       --text-color: #333;
@@ -148,8 +149,16 @@
       flex-grow: 1;
     }
     
+    .project-links {
+      display: flex;
+      gap: 15px;
+      margin-top: auto;
+      flex-wrap: wrap;
+    }
+    
     .project-link {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       background: var(--accent-color);
       color: white;
       padding: 10px 20px;
@@ -157,13 +166,27 @@
       text-decoration: none;
       font-weight: 500;
       transition: all 0.3s ease;
-      align-self: flex-start;
-      margin-top: auto;
+    }
+    
+    .project-link.github {
+      background: var(--github-color);
+    }
+    
+    .project-link i {
+      margin-right: 8px;
     }
     
     .project-link:hover {
-      background: #2980b9;
       transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    .project-link:hover.github {
+      background: #4d4d4d;
+    }
+    
+    .project-link:hover:not(.github) {
+      background: #2980b9;
     }
     
     .contact-links {
@@ -214,6 +237,17 @@
         height: 250px;
         flex: 0 0 auto;
         width: 100%;
+      }
+      
+      .project-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .project-link {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
       }
       
       nav {
@@ -272,7 +306,14 @@
           <h3>Autonomous RC Car</h3>
           <p>Converted a standard RC car into a fully autonomous vehicle using a Jetson Nano for onboard processing and a VESC for precise motor control. The system relies on a camera for visual perception and GNSS RTK for accurate real-time positioning.</p>
           <p>Implemented real-time object detection using PyTorch models optimized with NVIDIA CUDA and TensorRT for fast inference. Developed custom path-planning and control logic tailored to embedded systems and real-world outdoor navigation.</p>
-          <a href="#" class="project-link">View Project Details</a>
+          <div class="project-links">
+            <a href="#" class="project-link">
+              <i class="fas fa-external-link-alt"></i> View Project Details
+            </a>
+            <a href="https://github.com/BlanchoMartin/autonomous-rc-car" target="_blank" class="project-link github">
+              <i class="fab fa-github"></i> GitHub Repository
+            </a>
+          </div>
         </div>
       </div>
       
@@ -285,7 +326,14 @@
           <h3>Smart Home Automation System</h3>
           <p>Designed and implemented a comprehensive home automation system using ESP32 microcontrollers. Created a custom PCB for sensor integration including temperature, humidity, motion, and light sensors.</p>
           <p>Developed a Flask-based web dashboard with real-time monitoring and control. Implemented MQTT protocol for efficient device communication and energy-saving algorithms for optimized operation.</p>
-          <a href="#" class="project-link">View Project Details</a>
+          <div class="project-links">
+            <a href="#" class="project-link">
+              <i class="fas fa-external-link-alt"></i> View Project Details
+            </a>
+            <a href="https://github.com/BlanchoMartin/smart-home" target="_blank" class="project-link github">
+              <i class="fab fa-github"></i> GitHub Repository
+            </a>
+          </div>
         </div>
       </div>
       
@@ -298,7 +346,14 @@
           <h3>Robotic Arm Controller</h3>
           <p>Built a 6-DOF robotic arm with inverse kinematics control using STM32 microcontrollers. Implemented smooth trajectory planning and collision detection algorithms.</p>
           <p>Created a Python GUI for path teaching and sequence programming. Integrated computer vision for object recognition and automated pick-and-place operations.</p>
-          <a href="#" class="project-link">View Project Details</a>
+          <div class="project-links">
+            <a href="#" class="project-link">
+              <i class="fas fa-external-link-alt"></i> View Project Details
+            </a>
+            <a href="https://github.com/BlanchoMartin/robotic-arm" target="_blank" class="project-link github">
+              <i class="fab fa-github"></i> GitHub Repository
+            </a>
+          </div>
         </div>
       </div>
     </div>
