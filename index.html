@@ -5,99 +5,296 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Martin Blancho | Portfolio</title>
   <style>
+    :root {
+      --primary-color: #2c3e50;
+      --accent-color: #3498db;
+      --light-color: #ecf0f1;
+      --dark-color: #2c3e50;
+      --text-color: #333;
+      --border-radius: 8px;
+    }
+    
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
       line-height: 1.6;
-      background: #f4f4f4;
-      color: #333;
+      background: #f8f9fa;
+      color: var(--text-color);
     }
+    
     header {
-      background: #333;
+      background: var(--primary-color);
       color: #fff;
-      padding: 20px 0;
+      padding: 25px 0;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
+    
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+    
     nav a {
-      color: #fff;
-      margin: 0 15px;
+      color: var(--light-color);
       text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
     }
+    
+    nav a:hover {
+      background: var(--accent-color);
+      transform: translateY(-2px);
+    }
+    
     section {
-      padding: 40px 20px;
-      max-width: 800px;
+      padding: 60px 20px;
+      max-width: 900px;
       margin: auto;
     }
-    .projects {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+      color: var(--dark-color);
     }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 4px;
+      background: var(--accent-color);
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+    
+    .about-content {
+      background: white;
+      padding: 30px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      line-height: 1.8;
+    }
+    
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    
     .project {
       background: #fff;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      display: flex;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .project-image {
+      flex: 0 0 40%;
+      overflow: hidden;
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .project:hover .project-image img {
+      transform: scale(1.05);
+    }
+    
+    .project-content {
+      flex: 1;
+      padding: 25px;
+    }
+    
+    .project h3 {
+      margin-top: 0;
+      color: var(--primary-color);
+      font-size: 1.4rem;
+    }
+    
+    .project p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+    
+    .project-link {
+      display: inline-block;
+      background: var(--accent-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .project-link:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+    }
+    
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .contact-link {
+      display: flex;
+      align-items: center;
+      background: white;
+      padding: 15px 25px;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      color: var(--text-color);
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .contact-link:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .contact-link i {
+      margin-right: 15px;
+      font-size: 1.5rem;
+      color: var(--accent-color);
+    }
+    
     footer {
-      background: #333;
-      color: #fff;
+      background: var(--dark-color);
+      color: var(--light-color);
       text-align: center;
-      padding: 20px 0;
+      padding: 30px 0;
+      margin-top: 40px;
     }
-    @media (max-width: 600px) {
-      .projects {
-        grid-template-columns: 1fr;
+    
+    @media (max-width: 768px) {
+      .project {
+        flex-direction: column;
+      }
+      
+      .project-image {
+        height: 200px;
+      }
+      
+      nav {
+        gap: 10px;
+      }
+      
+      section {
+        padding: 40px 15px;
       }
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <header>
-    <h1>Blancho Martin</h1>
+    <h1>Martin Blancho</h1>
     <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <a href="#about"><i class="fas fa-user"></i> About</a>
+      <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
+      <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
     </nav>
   </header>
 
   <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm passionate about robotics and embedded systems. I enjoy building intelligent, hardware-integrated solutions and have experience programming in C, C++, and Python. I love working on projects that bring software and hardware together in creative ways.</p>
-</section>
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <p>Hello! I'm Martin Blancho, a passionate robotics and embedded systems engineer. I specialize in building intelligent, hardware-integrated solutions that bridge the gap between software and physical systems.</p>
+      <p>With expertise in C, C++, and Python, I enjoy creating innovative projects that combine electronics, programming, and mechanical design. My work focuses on developing efficient, reliable systems that solve real-world problems.</p>
+      <p>When I'm not coding or soldering components, you can find me exploring new technologies, contributing to open-source projects, or participating in robotics competitions.</p>
+    </div>
+  </section>
 
   <section id="projects">
-    <h2>Projects</h2>
+    <h2 class="section-title">Projects</h2>
     <div class="projects">
-        <div class="project">
-            <h3>Autonomous RC Car</h3>
-            <p>This project involves converting a standard RC car into an autonomous vehicle using a Jetson Nano for onboard processing and a VESC (Vedder Electronic Speed Controller) for precise motor control. The system integrates sensors and vision-based navigation to allow the car to drive itself without human input.</p>
-            <a href="#">View Project</a>
+      <div class="project">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Autonomous RC Car">
         </div>
-        <div class="project">
-            <h3>Project Two</h3>
-            <p>Description of another project. Keep it short and clear.</p>
-            <a href="#">View Project</a>
+        <div class="project-content">
+          <h3>Autonomous RC Car</h3>
+          <p>Converted a standard RC car into a fully autonomous vehicle using a Jetson Nano for onboard processing and a VESC for precise motor control. The system integrates LIDAR, IMU sensors, and computer vision for environment perception and navigation.</p>
+          <p>Developed obstacle avoidance algorithms and path planning in ROS (Robot Operating System). Implemented real-time object detection using TensorRT-optimized models.</p>
+          <a href="#" class="project-link">View Project Details</a>
         </div>
-        <div class="project">
-            <h3>Project Three</h3>
-            <p>Description of another project. Keep it short and clear.</p>
-            <a href="#">View Project</a>
+      </div>
+      
+      <div class="project">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Smart Home Automation System">
         </div>
+        <div class="project-content">
+          <h3>Smart Home Automation System</h3>
+          <p>Designed and implemented a comprehensive home automation system using ESP32 microcontrollers. Created a custom PCB for sensor integration including temperature, humidity, motion, and light sensors.</p>
+          <p>Developed a Flask-based web dashboard with real-time monitoring and control. Implemented MQTT protocol for efficient device communication and energy-saving algorithms for optimized operation.</p>
+          <a href="#" class="project-link">View Project Details</a>
+        </div>
+      </div>
+      
+      <div class="project">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Robotic Arm Controller">
+        </div>
+        <div class="project-content">
+          <h3>Robotic Arm Controller</h3>
+          <p>Built a 6-DOF robotic arm with inverse kinematics control using STM32 microcontrollers. Implemented smooth trajectory planning and collision detection algorithms.</p>
+          <p>Created a Python GUI for path teaching and sequence programming. Integrated computer vision for object recognition and automated pick-and-place operations.</p>
+          <a href="#" class="project-link">View Project Details</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:martinblancho3@gmail.com">martinblancho3@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/mblancho/" target="_blank">mblancho</a></p>
-    <p>GitHub: <a href="https://github.com/BlanchoMartin" target="_blank">@BlanchoMartin</a></p>
+    <h2 class="section-title">Contact Me</h2>
+    <div class="contact-links">
+      <a href="mailto:martinblancho3@gmail.com" class="contact-link">
+        <i class="fas fa-envelope"></i>
+        <span>martinblancho3@gmail.com</span>
+      </a>
+      <a href="https://www.linkedin.com/in/mblancho/" target="_blank" class="contact-link">
+        <i class="fab fa-linkedin"></i>
+        <span>LinkedIn: mblancho</span>
+      </a>
+      <a href="https://github.com/BlanchoMartin" target="_blank" class="contact-link">
+        <i class="fab fa-github"></i>
+        <span>GitHub: @BlanchoMartin</span>
+      </a>
+    </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 Blancho Martin. All rights reserved.</p>
+    <p>&copy; 2025 Martin Blancho. All rights reserved.</p>
+    <p>Robotics & Embedded Systems Enthusiast</p>
   </footer>
 </body>
 </html>
