@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Martin Blancho | Portfolio</title>
+  <title>Martin Blancho | Robotics Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary-color: #2c3e50;
@@ -109,7 +110,12 @@
     
     .project-image {
       flex: 0 0 40%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
+      min-height: 250px;
+      background-color: #f0f0f0;
     }
     
     .project-image img {
@@ -126,6 +132,8 @@
     .project-content {
       flex: 1;
       padding: 25px;
+      display: flex;
+      flex-direction: column;
     }
     
     .project h3 {
@@ -136,7 +144,8 @@
     
     .project p {
       color: #555;
-      margin-bottom: 20px;
+      margin: 0 0 15px 0;
+      flex-grow: 1;
     }
     
     .project-link {
@@ -148,6 +157,8 @@
       text-decoration: none;
       font-weight: 500;
       transition: all 0.3s ease;
+      align-self: flex-start;
+      margin-top: auto;
     }
     
     .project-link:hover {
@@ -200,7 +211,9 @@
       }
       
       .project-image {
-        height: 200px;
+        height: 250px;
+        flex: 0 0 auto;
+        width: 100%;
       }
       
       nav {
@@ -211,8 +224,23 @@
         padding: 40px 15px;
       }
     }
+    
+    /* Responsive adjustments */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .project-image {
+        min-height: 300px;
+      }
+    }
+    
+    /* For very tall content */
+    .project-tall-content .project-content {
+      padding: 30px;
+    }
+    
+    .project-tall-content .project-image {
+      flex: 0 0 35%;
+    }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <header>
@@ -229,28 +257,30 @@
     <div class="about-content">
       <p>Hello! I'm Martin Blancho, a passionate robotics and embedded systems engineer. I specialize in building intelligent, hardware-integrated solutions that bridge the gap between software and physical systems.</p>
       <p>With expertise in C, C++, and Python, I enjoy creating innovative projects that combine electronics, programming, and mechanical design. My work focuses on developing efficient, reliable systems that solve real-world problems.</p>
-      <p>When I'm not coding or soldering components, you can find me exploring new technologies, contributing to open-source projects, or participating in robotics competitions.</p>
     </div>
   </section>
 
   <section id="projects">
     <h2 class="section-title">Projects</h2>
     <div class="projects">
-      <div class="project">
+      <!-- Project with tall content -->
+      <div class="project project-tall-content">
         <div class="project-image">
-          <img src="/images/top_car.jpeg" alt="Autonomous RC Car">
+          <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Autonomous RC Car">
         </div>
         <div class="project-content">
           <h3>Autonomous RC Car</h3>
           <p>Converted a standard RC car into a fully autonomous vehicle using a Jetson Nano for onboard processing and a VESC for precise motor control. The system integrates LIDAR, IMU sensors, and computer vision for environment perception and navigation.</p>
           <p>Developed obstacle avoidance algorithms and path planning in ROS (Robot Operating System). Implemented real-time object detection using TensorRT-optimized models.</p>
+          <p>Additional technical details: The system uses a custom CAN bus protocol for communication between components. Implemented a PID controller for steering and acceleration. Tested in various environments with different lighting conditions.</p>
           <a href="#" class="project-link">View Project Details</a>
         </div>
       </div>
       
+      <!-- Project with medium content -->
       <div class="project">
         <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Smart Home Automation System">
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Smart Home Automation System">
         </div>
         <div class="project-content">
           <h3>Smart Home Automation System</h3>
@@ -260,9 +290,10 @@
         </div>
       </div>
       
+      <!-- Project with shorter content -->
       <div class="project">
         <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Robotic Arm Controller">
+          <img src="https://images.unsplash.com/photo-1593491201253-3ecb86b053dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Robotic Arm Controller">
         </div>
         <div class="project-content">
           <h3>Robotic Arm Controller</h3>
